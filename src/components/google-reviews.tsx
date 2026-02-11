@@ -98,8 +98,8 @@ export function GoogleReviews() {
                       <Star
                         key={i}
                         className={`h-4 w-4 ${i < review.rating
-                            ? 'fill-yellow-400 text-yellow-400'
-                            : 'text-gray-200'
+                          ? 'fill-yellow-400 text-yellow-400'
+                          : 'text-gray-200'
                           }`}
                       />
                     ))}
@@ -122,20 +122,6 @@ export function GoogleReviews() {
           </div>
         </div>
 
-        {/* Google Maps Embed */}
-        <div className="max-w-5xl mx-auto my-16">
-          <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border-8 border-background">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.472805636658!2d124.1234!3d0.7890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMMKwNDcnMjAuNCJOIDEyNMKwMDcnMjQuMiJF!5e0!3m2!1sid!2sid!4v1234567890"
-              width="100%"
-              height="450"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
-        </div>
 
         {/* CTA Button */}
         <div className="text-center">
