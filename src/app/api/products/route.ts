@@ -8,10 +8,14 @@ export async function GET() {
     });
 
     return NextResponse.json(products);
-  } catch (error) {
-    console.error('Error fetching products:', error);
+  } catch (error: any) {
+    console.error('CRITICAL DATABASE ERROR [GET /api/products]:', {
+      message: error.message,
+      stack: error.stack,
+      code: error.code
+    });
     return NextResponse.json(
-      { error: 'Failed to fetch products' },
+      { error: 'Gagal mengambil data menu. Pastikan database sudah terhubung.', details: error.message },
       { status: 500 }
     );
   }

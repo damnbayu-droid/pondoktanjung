@@ -28,6 +28,7 @@ export default function CheckoutPage() {
   const { items, removeItem, updateQuantity, clearCart, getTotalPrice, addItem } =
     useCartStore();
   const [loading, setLoading] = useState(false);
+  const [productsLoading, setProductsLoading] = useState(true);
   const [availableProducts, setAvailableProducts] = useState<any[]>([]);
   const [formData, setFormData] = useState({
     name: '',
@@ -38,14 +39,19 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     const fetchProducts = async () => {
+      setProductsLoading(true);
       try {
         const response = await fetch('/api/products');
         if (response.ok) {
           const data = await response.json();
           setAvailableProducts(data);
+        } else {
+          console.error('Failed to fetch products:', response.statusText);
         }
       } catch (error) {
         console.error('Error fetching products:', error);
+      } finally {
+        setProductsLoading(false);
       }
     };
     fetchProducts();
@@ -164,23 +170,34 @@ export default function CheckoutPage() {
                 <CardContent className="pt-6">
                   <div className="space-y-2">
                     <Label>Tambahkan Menu ke Pesanan</Label>
-                    <Select onValueChange={handleQuickAdd}>
+                    <Select onValueChange={handleQuickAdd} disabled={productsLoading}>
                       <SelectTrigger className="w-full h-12">
-                        <SelectValue placeholder="Klik untuk memilih menu..." />
+                        <SelectValue placeholder={productsLoading ? "Sedang mengambil menu..." : "Klik untuk memilih menu..."} />
                       </SelectTrigger>
                       <SelectContent>
-                        {availableProducts.map((product) => (
-                          <SelectItem key={product.id} value={product.id}>
-                            <div className="flex justify-between items-center w-full gap-4">
-                              <span>{product.name}</span>
-                              <span className="text-primary font-bold">
-                                Rp {product.price.toLocaleString('id-ID')}
-                              </span>
-                            </div>
-                          </SelectItem>
-                        ))}
+                        {availableProducts.length === 0 && !productsLoading ? (
+                          <div className="p-4 text-center text-sm text-destructive font-medium">
+                            Menu tidak ditemukan. Pastikan database sudah di-seed.
+                          </div>
+                        ) : (
+                          availableProducts.map((product) => (
+                            <SelectItem key={product.id} value={product.id}>
+                              <div className="flex justify-between items-center w-full gap-4">
+                                <span>{product.name}</span>
+                                <span className="text-primary font-bold">
+                                  Rp {product.price.toLocaleString('id-ID')}
+                                </span>
+                              </div>
+                            </SelectItem>
+                          ))
+                        )}
                       </SelectContent>
                     </Select>
+                    {availableProducts.length === 0 && !productsLoading && (
+                      <p className="text-[10px] text-destructive leading-tight italic">
+                        * Jika pilihan menu tidak muncul, hubungi tim IT untuk melakukan setup database.
+                      </p>
+                    )}
                     <p className="text-xs text-muted-foreground pt-1">
                       * Pilih menu favorit anda dari daftar di atas
                     </p>

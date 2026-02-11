@@ -14,42 +14,45 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pondok Tanjung Kotabunan | Resto Cafe Kotabunan",
-  description: "Cafe sederhana dengan menu lokal terbaik di Kotabunan. Nikmati hidangan lezat dengan cita rasa asli Indonesia.",
+  title: "Pondok Tanjung Kotabunan | Resto Cafe & Kuliner Lokal Terbaik",
+  description: "Nikmati hidangan lezat dengan cita rasa asli Indonesia di Pondok Tanjung Kotabunan. Menu spesial Lalapan, Ikan Bakar, dan Nasi Goreng dengan suasana nyaman.",
   keywords: [
     "Pondok Tanjung",
-    "Kotabunan",
-    "Resto Cafe",
-    "Cafe Kotabunan",
-    "Makanan Lokal",
-    "Kuliner Sulawesi Utara",
-    "Lalapan Ayam",
-    "Ikan Bakar",
-    "Nasi Goreng"
+    "Pondok Tanjung Kotabunan",
+    "Resto Cafe Kotabunan",
+    "Kuliner Kotabunan",
+    "Cafe Sulawesi Utara",
+    "Lalapan Ayam Kotabunan",
+    "Ikan Bakar Segar",
+    "Nasi Goreng Spesial",
+    "Tempat Makan Enak Kotabunan",
+    "UMKM Kotabunan"
   ],
   authors: [{ name: "Pondok Tanjung" }],
   icons: {
-    icon: "/logo.svg",
+    icon: "/Logo.webp",
+    apple: "/Logo.webp",
   },
   openGraph: {
-    title: "Pondok Tanjung Kotabunan | Resto Cafe Sederhana",
-    description: "Cafe sederhana dengan menu lokal terbaik di Kotabunan",
+    title: "Pondok Tanjung Kotabunan | Resto Cafe & Kuliner Lokal Terbaik",
+    description: "Nikmati hidangan lezat dengan cita rasa asli Indonesia di Pondok Tanjung Kotabunan.",
     url: "https://pondoktanjung.com",
     siteName: "Pondok Tanjung",
     type: "website",
+    locale: "id_ID",
     images: [
       {
         url: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&h=630&fit=crop",
         width: 1200,
         height: 630,
-        alt: "Pondok Tanjung Cafe",
+        alt: "Pondok Tanjung Cafe & Resto",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pondok Tanjung Kotabunan | Resto Cafe",
-    description: "Cafe sederhana dengan menu lokal terbaik di Kotabunan",
+    title: "Pondok Tanjung Kotabunan | Resto Cafe & Kuliner Lokal Terbaik",
+    description: "Nikmati hidangan lezat dengan cita rasa asli Indonesia di Pondok Tanjung Kotabunan.",
     images: [
       "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&h=630&fit=crop",
     ],
@@ -60,6 +63,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
 };

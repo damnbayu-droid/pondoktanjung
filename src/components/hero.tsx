@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { ArrowDown, MapPin, Clock } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export function Hero() {
@@ -18,10 +19,12 @@ export function Hero() {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black/50 z-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-20" />
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&h=1080&fit=crop"
           alt="Cafe Background"
-          className="w-full h-full object-cover"
+          fill
+          priority
+          className="object-cover"
           style={{ transform: 'scale(1.1)' }}
         />
       </div>
